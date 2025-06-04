@@ -41,3 +41,29 @@ AND DATEDIFF(year, cust_birth_date, acct_open_date) -
 -- Please write a query that will return the Customer ID and Name of all customers who are both primary and secondary owners of accounts. 
 -- If a customer is only the primary owner of accounts, the customer should not be included in the results. 
 -- Likewise, if a customer is only a secondary owner of accounts, the customer should not be included in the results.
+
+
+
+-- Query 3
+-- Please write a query that will return the State Code, Account ID, Account Title, and Account Balance for the largest account (measured by Account Balance) in each state.
+
+-- Find largest account per state
+WITH max_per_state AS (
+SELECT 
+  state_code, 
+  MAX(acct_balance) AS largest_acct
+FROM accounts
+GROUP BY state_code
+)
+
+-- Join largest account to required columns
+SELECT 
+  A.state_code, 
+  acct_id, 
+  acct_title, 
+  acct_balance
+FROM accounts AS A
+INNER JOIN max_per_state AS M
+  ON A.state_code = M.state_code
+  AND acct_balance = largest_acct
+;
