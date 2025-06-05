@@ -1,3 +1,5 @@
+-- LPL Financial - SQL Challenge Solutions by Christian Curcurato
+-- Date - June 4th, 2025
 -- All queries are written in T-SQL syntax
 
 -- Query 1 Solution
