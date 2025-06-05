@@ -17,7 +17,7 @@ INNER JOIN cust_acct AS CA
   ON C.cust_id = CA.cust_id
 INNER JOIN accounts AS A
     ON CA.acct_id = A.acct_id
--- WHERE statement filters for first day of the month 6 months ago and first day of this month to give past 6 full months
+-- WHERE statement filters for first day of the month 6 months ago AND the first day of this month to filter for the past 6 full months
 WHERE A.acct_open_date >= DATEADD(day, 1 - DAY(DATEADD(month, -6, GETDATE())), DATEADD(month, -6, GETDATE()))
   AND A.acct_open_date < DATEADD(day, 1 - DAY(GETDATE()), GETDATE())
 )
