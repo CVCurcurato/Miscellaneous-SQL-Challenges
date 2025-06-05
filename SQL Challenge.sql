@@ -28,12 +28,13 @@ SELECT
   acct_title
 FROM past_6_months
 WHERE cust_role = 'primary'
+-- DATEDIFF/CASE statement tries to catch exact age of a customer by accounting for them being born in the same year but different months or days
 AND DATEDIFF(year, cust_birth_date, acct_open_date) - 
     CASE 
         WHEN MONTH(acct_open_date) < MONTH(cust_birth_date) 
-             OR (MONTH(acct_open_date) = MONTH(cust_birth_date) AND DAY(acct_open_date) < DAY(cust_birth_date))
-        THEN 1 ELSE 0 
-    END <= 30
+        OR (MONTH(acct_open_date) = MONTH(cust_birth_date) AND DAY(acct_open_date) < DAY(cust_birth_date))
+    THEN 1 ELSE 0 
+END <= 30
 ;
 
 -- Query 2 Solution
