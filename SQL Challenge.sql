@@ -1,4 +1,4 @@
--- LPL Financial - SQL Challenge Solutions by Christian Curcurato
+-- SQL Challenge Solutions by Christian Curcurato
 -- Date - June 4th, 2025
 -- All queries are written in T-SQL syntax
 
